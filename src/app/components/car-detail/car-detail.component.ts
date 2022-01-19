@@ -15,16 +15,16 @@ export class CarDetailComponent implements OnInit {
   constructor(private activatedRoute:ActivatedRoute, private carService: CarService) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params => {
-      if (params['id']) {
-        this.getById(params['id'])
-      }
-    })
+    this.getById();
   }
 
-  getById(carId: number){
-    this.carService.getById(carId).subscribe(response => {
-      this.car = response.data
+  getById(){
+    this.activatedRoute.params.subscribe(params => {
+      if (params['id']) {
+        this.carService.getById(params['id']).subscribe(response => {
+          this.car = response.data
+        })
+      }
     })
   }
 }
