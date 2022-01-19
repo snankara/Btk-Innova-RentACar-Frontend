@@ -1,0 +1,37 @@
+<div class="card">
+    <p-dataView #dv [value]="cars" [paginator]="true" [rows]="9" filterBy="name"
+       layout="grid">
+        <ng-template pTemplate="header">
+            <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between">
+                <p-dropdown placeholder="Sort By Price"  styleClass="p-mb-2 p-mb-md-0"></p-dropdown>
+                <span class="p-input-icon-left p-mb-2 p-mb-md-0">
+                    <i class="pi pi-search"></i>
+                    <input type="search" pInputText placeholder="Search by Name" >
+                </span>
+            </div>
+        </ng-template>
+        <ng-template let-car pTemplate="gridItem">
+            <div class="p-col-12 p-md-4">
+                <div class="product-grid-item card">
+                    <div class="product-grid-item-top">
+                        <div>
+                            <i class="pi pi-tag product-category-icon"></i>
+                            <span class="product-category">{{car.brandName}}</span>
+                        </div>
+                        <span class="product-badge status-">{{car.colorName}}</span>
+                    </div>
+                    <div class="product-grid-item-content">
+                        <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple122/v4/52/39/4d/52394d54-0782-e9ca-ca72-7336a0870249/source/256x256bb.jpg" [alt]="car.modelYear"/>
+                        <div class="product-name"></div>
+                        <div class="product-description">{{car.description}}</div>
+                        <p-rating [readonly]="false" [cancel]="false"></p-rating>
+                    </div>
+                    <div class="product-grid-item-bottom">
+                        <span class="product-price">${{car.dailyPrice}}</span>
+                        <p-button icon="pi pi-shopping-cart" routerLink="car/{{car.id}}"></p-button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView>
+</div>
