@@ -24,6 +24,9 @@ import {CardModule} from 'primeng/card';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { ToastrModule } from 'ngx-toastr';
 import { ColorAddComponent } from './components/color-add/color-add.component';
+import { RentalComponent } from './components/rental/rental.component';
+import {InputNumberModule} from 'primeng/inputnumber';
+import {CalendarModule} from 'primeng/calendar';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
     CarComponent,
     CarDetailComponent,
     BrandAddComponent,
-    ColorAddComponent
+    ColorAddComponent,
+    RentalComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +54,8 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
     RippleModule,
     TabViewModule,
     PasswordModule,
+    InputNumberModule,
+    CalendarModule,
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot({
