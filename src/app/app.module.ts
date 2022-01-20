@@ -18,9 +18,12 @@ import {RatingModule} from 'primeng/rating';
 import {TabViewModule} from 'primeng/tabview';
 import {RippleModule} from 'primeng/ripple';
 import {PasswordModule} from 'primeng/password'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import {CardModule} from 'primeng/card';
+import { BrandAddComponent } from './components/brand-add/brand-add.component';
+import { ToastrModule } from 'ngx-toastr';
+import { ColorAddComponent } from './components/color-add/color-add.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,9 @@ import {CardModule} from 'primeng/card';
     BrandComponent,
     ColorComponent,
     CarComponent,
-    CarDetailComponent
+    CarDetailComponent,
+    BrandAddComponent,
+    ColorAddComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +51,10 @@ import {CardModule} from 'primeng/card';
     TabViewModule,
     PasswordModule,
     FormsModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      positionClass:"toast-top-right"
+    }),
     CardModule
   ],
   providers: [],

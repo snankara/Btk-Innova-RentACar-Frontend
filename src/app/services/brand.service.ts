@@ -1,3 +1,5 @@
+import { CreateBrandModel } from './../models/createBrandModel';
+import { ResponseModel } from './../models/responseModel';
 import { BrandListModel } from './../models/brandListModel';
 import { ListResponseModel } from './../models/listResponseModel';
 import { environment } from './../../environments/environment';
@@ -16,5 +18,9 @@ export class BrandService {
 
   getBrands(): Observable<ListResponseModel<BrandListModel>>{
     return this.httpClient.get<ListResponseModel<BrandListModel>>(`${this.apiUrl}/getall`);
+  }
+
+  add(brand: CreateBrandModel):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(`${this.apiUrl}/add`, brand);
   }
 }
