@@ -7,7 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {path: '', component: CarComponent},
   {path: 'car/:id', component: CarDetailComponent},
-  {path: 'car/:id/rental/:id', component: RentalComponent},
+  {path: 'rental/:id', component: RentalComponent},
   {path: '', redirectTo: '', pathMatch: 'full'}
 ];
 

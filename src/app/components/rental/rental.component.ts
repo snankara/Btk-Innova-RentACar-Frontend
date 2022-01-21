@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CityListModel } from 'src/app/models/cityListModel';
 import { CityModel } from 'src/app/models/cityModel';
 import { DatePipe } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-rental',
@@ -16,16 +17,18 @@ import { DatePipe } from '@angular/common';
 export class RentalComponent implements OnInit {
  
   rentalAddForm: FormGroup
-  carId: number
   cities: CityListModel[]
+  carId: number
 
   constructor(private rentalService: RentalService, private activatedRoute: ActivatedRoute, 
-              private formBuilder:FormBuilder, private cityService: CityService, private datePipe:DatePipe) { }
+              private formBuilder:FormBuilder, private cityService: CityService, 
+              private datePipe:DatePipe, private toastrService: ToastrService) { }
+
 
   ngOnInit(): void {
-    this.getRouteCarId()
-    this.getCities()
+    this.getRouteCarId();
     this.createRentalAddForm();
+    this.getCities()
   }
 
   createRentalAddForm(){
@@ -42,14 +45,27 @@ export class RentalComponent implements OnInit {
   }
  
   getRouteCarId(){
-    this.activatedRoute.params.subscribe(params => {
-      this.carId = params["id"]
+    this.activatedRoute.params.subscribe(params => { 
+      this.carId = parseInt(params["id"])
     })
   }
 
   add(){
     console.log(this.rentalAddForm.value);
-    
+    if (this.rentalAddForm.valid) {
+      this.rentalAddForm.value.rentDate = this.getFormattedRentDate(this.rentalAddForm.value.rentDate);
+      this.rentalAddForm.value.returnDate = this.getFormattedReturnDate(this.rentalAddForm.value.returnDate)
+      
+      let rentalModel = Object.assign({}, this.rentalAddForm.value)
+      this.rentalService.rentForIndividualCustomer(rentalModel).subscribe(response => {
+        if (response.success) {
+          this.toastrService.success(response.message, "Succesful !")
+        }
+        else{
+          this.toastrService.error(response.message, "Error !")
+        }
+      })
+    }
   }
 
   getCities(){
@@ -58,14 +74,11 @@ export class RentalComponent implements OnInit {
     })
   }
 
-  getFormattedRentDate(event:any){
-    console.log(event.target.value);
-    
-    return this.rentalAddForm.value.rentDate = this.datePipe.transform(new Date(), 'yyyy-MM-dd')
+  getFormattedRentDate(rentDate: Date){
+   return this.datePipe.transform(new Date(rentDate), 'yyyy-MM-dd')
   }
 
-  getFormattedReturnDate(){
-    return this.rentalAddForm.value.returnDate = this.datePipe.transform(new Date(), 'yyyy-MM-dd')
+  getFormattedReturnDate(returnDate: Date){
+    return this.datePipe.transform(new Date(returnDate), 'yyyy-MM-dd') 
   }
-
 }
