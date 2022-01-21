@@ -1,11 +1,10 @@
+import { DatePipe } from '@angular/common';
 import { CityService } from './../../services/city.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RentalService } from './../../services/rental.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CityListModel } from 'src/app/models/cityListModel';
-import { CityModel } from 'src/app/models/cityModel';
-import { DatePipe } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -51,10 +50,9 @@ export class RentalComponent implements OnInit {
   }
 
   add(){
-    console.log(this.rentalAddForm.value);
     if (this.rentalAddForm.valid) {
-      this.rentalAddForm.value.rentDate = this.getFormattedRentDate(this.rentalAddForm.value.rentDate);
-      this.rentalAddForm.value.returnDate = this.getFormattedReturnDate(this.rentalAddForm.value.returnDate)
+      this.rentalAddForm.value.rentDate = this.getFormattedDate(this.rentalAddForm.value.rentDate);
+      this.rentalAddForm.value.returnDate = this.getFormattedDate(this.rentalAddForm.value.returnDate)
       
       let rentalModel = Object.assign({}, this.rentalAddForm.value)
       this.rentalService.rentForIndividualCustomer(rentalModel).subscribe(response => {
@@ -74,11 +72,7 @@ export class RentalComponent implements OnInit {
     })
   }
 
-  getFormattedRentDate(rentDate: Date){
-   return this.datePipe.transform(new Date(rentDate), 'yyyy-MM-dd')
-  }
-
-  getFormattedReturnDate(returnDate: Date){
-    return this.datePipe.transform(new Date(returnDate), 'yyyy-MM-dd') 
+  getFormattedDate(date: Date){
+   return this.datePipe.transform(new Date(date), 'yyyy-MM-dd')
   }
 }

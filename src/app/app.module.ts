@@ -27,6 +27,8 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
 import { RentalComponent } from './components/rental/rental.component';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {CalendarModule} from 'primeng/calendar';
+import {MenubarModule} from 'primeng/menubar';
+import { NavComponent } from './components/shared/nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import {CalendarModule} from 'primeng/calendar';
     CarDetailComponent,
     BrandAddComponent,
     ColorAddComponent,
-    RentalComponent
+    RentalComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,8 @@ import {CalendarModule} from 'primeng/calendar';
     ToastrModule.forRoot({
       positionClass:"toast-top-right"
     }),
-    CardModule
+    CardModule,
+    MenubarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
