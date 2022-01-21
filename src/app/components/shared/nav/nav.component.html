@@ -1,1 +1,9 @@
-<p>nav works!</p>
+<p-menubar [model]="items">
+    <ng-template pTemplate="start">
+        <img src="../../../../assets/primeng-logo.png" height="40" class="mr-2">
+    </ng-template>
+    <ng-template pTemplate="end">
+        <button pButton pRipple type="button" label="Sign In" class="p-button-outlined p-button-rounded mr-2"></button>
+        <button pButton pRipple type="button" label="Sign Up" class="p-button p-button-rounded"></button>
+    </ng-template>
+</p-menubar>

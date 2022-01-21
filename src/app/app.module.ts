@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { BrandComponent } from './components/brand/brand.component';
 import { ColorComponent } from './components/color/color.component';
 import { CarComponent } from './components/car/car.component';
-
 import {DataViewModule} from 'primeng/dataview';
 import {ButtonModule} from 'primeng/button';
 import {PanelModule} from 'primeng/panel';
@@ -24,11 +23,11 @@ import {CardModule} from 'primeng/card';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { ToastrModule } from 'ngx-toastr';
 import { ColorAddComponent } from './components/color-add/color-add.component';
-import { RentalComponent } from './components/rental/rental.component';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {CalendarModule} from 'primeng/calendar';
 import {MenubarModule} from 'primeng/menubar';
 import { NavComponent } from './components/shared/nav/nav.component';
+import { RentalAddComponent } from './components/rental-add/rental-add.component';
 
 @NgModule({
   declarations: [
@@ -39,8 +38,8 @@ import { NavComponent } from './components/shared/nav/nav.component';
     CarDetailComponent,
     BrandAddComponent,
     ColorAddComponent,
-    RentalComponent,
-    NavComponent
+    NavComponent,
+    RentalAddComponent
   ],
   imports: [
     BrowserModule,
