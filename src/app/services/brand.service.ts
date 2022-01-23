@@ -21,6 +21,10 @@ export class BrandService {
     return this.httpClient.get<ListResponseModel<BrandListModel>>(`${this.apiUrl}/getall`);
   }
 
+  getBrandsDeletedFalse(): Observable<ListResponseModel<BrandListModel>>{
+    return this.httpClient.get<ListResponseModel<BrandListModel>>(`${this.apiUrl}/getallisdeletedfalse`);
+  }
+
   add(brand: CreateBrandModel):Observable<ResponseModel>{    
     return this.httpClient.post<ResponseModel>(`${this.apiUrl}/add`, brand);
   }
@@ -31,5 +35,5 @@ export class BrandService {
 
   delete(brandId: number):Observable<ResponseModel>{
     return this.httpClient.post<ResponseModel>(`${this.apiUrl}/delete?id=${brandId}`,"");
-  }
+  } 
 }

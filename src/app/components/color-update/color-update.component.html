@@ -1,0 +1,17 @@
+<p-toast></p-toast>
+<button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" [disabled]="color.deleted" (click)="openDialog()"></button>
+<form [formGroup]="colorUpdateForm" (submit)="update()">
+    <p-dialog [(visible)]="colorUpdateDialog" [style]="{width: '450px'}" header="Color Update" [modal]="true" styleClass="p-fluid">
+            <ng-template pTemplate="content">
+                <div class="field">
+                    <label for="name">Name</label>
+                    <input type="text" formControlName="name" pInputText id="name" autofocus />
+                </div>
+            </ng-template>
+            <ng-template pTemplate="footer">
+                <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" type="button" (click)="hideDialog()"></button>
+                <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" type="submit"></button> 
+            </ng-template>
+    </p-dialog>
+</form>
+    

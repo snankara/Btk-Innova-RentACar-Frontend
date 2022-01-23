@@ -1,4 +1,43 @@
-<h1>Colors</h1>
-<ul>
-    <li *ngFor="let color of colors">{{color.name}}</li>
-</ul>
+<p-toast></p-toast>
+<div class="card">
+    <p-toolbar styleClass="mb-4">
+        <ng-template pTemplate="left">
+            <app-color-add></app-color-add>
+        </ng-template>
+    </p-toolbar>
+    <p-table #dt [value]="colors" [rows]="10" [globalFilterFields]="['name', 'deleted']" responsiveLayout="scroll"
+         [rowHover]="true" dataKey="id"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+                <h5 class="m-0">Renklerinizi Yönetin</h5>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')" placeholder="Search name or status" />
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+                <th pSortableColumn="deleted">Status <p-sortIcon field="deleted"></p-sortIcon></th>
+                <th></th> 
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-color>
+            <tr>
+                <td>{{color.name}}</td>
+                <td><p-badge [value]="color.deleted" [severity]="color.deleted ? 'danger' : 'info'"></p-badge></td>
+                <td>
+                    <app-color-update class="d-inline-block" [color]="color"></app-color-update>
+                    <app-color-delete [color]="color"></app-color-delete>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between">
+                In total there are {{colors ? colors.length : 0 }} colors.
+            </div>
+        </ng-template>
+    </p-table>
+</div>

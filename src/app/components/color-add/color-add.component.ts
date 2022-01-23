@@ -1,17 +1,19 @@
+import { MessageService } from 'primeng/api';
 import { ColorService } from './../../services/color.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-color-add',
   templateUrl: './color-add.component.html',
-  styleUrls: ['./color-add.component.css']
+  styleUrls: ['./color-add.component.css'], 
+  providers: [MessageService]
 })
 export class ColorAddComponent implements OnInit {
 
   colorAddForm: FormGroup
-  constructor(private formBuilder: FormBuilder, private colorService: ColorService, private toastrService: ToastrService) { }
+  colorAddDialog: boolean
+  constructor(private formBuilder: FormBuilder, private colorService: ColorService, private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.createColorAddForm();
@@ -28,12 +30,22 @@ export class ColorAddComponent implements OnInit {
       let colorModel = Object.assign({}, this.colorAddForm.value)
       this.colorService.add(colorModel).subscribe(response => {
         if (response.success) {
-          this.toastrService.success(response.message, "Successful !")
+          this.messageService.add({severity:'success', summary: 'Successful', detail: response.message, life: 3000});
         }
         else{
-          this.toastrService.error(response.message, "Error !")
+          this.messageService.add({severity:'error', summary: 'Error', detail: response.message, life: 3000});
         }
+        this.colorAddDialog = false;
       })
     }
+  }
+
+  openNew() {
+    this.colorAddForm.reset()
+    this.colorAddDialog = true;
+}
+
+  hideDialog() {
+    this.colorAddDialog = false;
   }
 }

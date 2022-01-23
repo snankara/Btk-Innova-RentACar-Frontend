@@ -9,9 +9,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./brand-add.component.css'],
   providers: [MessageService]
 })
-export class BrandAddComponent implements OnInit {
+export class BrandAddComponent implements OnInit { 
 
-  brandAddForm: FormGroup
+  brandAddForm: FormGroup 
   brandAddDialog: boolean;
 
   constructor(private brandService: BrandService, private formBuilder: FormBuilder, private messageService: MessageService) { }

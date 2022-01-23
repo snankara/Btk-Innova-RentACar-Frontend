@@ -38,6 +38,13 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import {BadgeModule} from 'primeng/badge';
 import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
 import { BrandDeleteComponent } from './components/brand-delete/brand-delete.component';
+import { ColorUpdateComponent } from './components/color-update/color-update.component';
+import { ColorDeleteComponent } from './components/color-delete/color-delete.component';
+import { CarForDashboardComponent } from './components/car-for-dashboard/car-for-dashboard.component';
+import { CarAddComponent } from './components/car-add/car-add.component';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
+import { CarDeleteComponent } from './components/car-delete/car-delete.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +59,13 @@ import { BrandDeleteComponent } from './components/brand-delete/brand-delete.com
     RentalAddComponent,
     DashboardComponent,
     BrandUpdateComponent,
-    BrandDeleteComponent
+    BrandDeleteComponent,
+    ColorUpdateComponent,
+    ColorDeleteComponent,
+    CarForDashboardComponent,
+    CarAddComponent,
+    CarUpdateComponent,
+    CarDeleteComponent
   ],
   imports: [
     BrowserModule,
@@ -70,6 +83,7 @@ import { BrandDeleteComponent } from './components/brand-delete/brand-delete.com
     DialogModule,
     BadgeModule,
     InputTextModule,
+    InputTextareaModule,
     RatingModule,
     RippleModule,
     TabViewModule,

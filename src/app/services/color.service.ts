@@ -1,3 +1,4 @@
+import { UpdateColorModel } from './../models/updateColorModel';
 import { CreateColorModel } from './../models/createColorModel';
 import { ResponseModel } from './../models/responseModel';
 import { ColorListModel } from './../models/colorListModel';
@@ -19,8 +20,20 @@ export class ColorService {
   getColors(): Observable<ListResponseModel<ColorListModel>>{
     return this.httpClient.get<ListResponseModel<ColorListModel>>(`${this.apiUrl}/getall`);
   }
+
+  getColorsDeletedFalse(): Observable<ListResponseModel<ColorListModel>>{
+    return this.httpClient.get<ListResponseModel<ColorListModel>>(`${this.apiUrl}/getallisdeletedfalse`);
+  }
   
   add(color: CreateColorModel):Observable<ResponseModel>{
     return this.httpClient.post<ResponseModel>(`${this.apiUrl}/add`, color);
+  }
+
+  update(color: UpdateColorModel):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(`${this.apiUrl}/update`, color);
+  }
+
+  delete(colorId: number):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(`${this.apiUrl}/delete?id=${colorId}`,"");
   }
 }

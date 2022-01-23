@@ -1,26 +1,26 @@
-import { BrandService } from './../../services/brand.service';
+import { ColorService } from './../../services/color.service';
+import { ColorModel } from './../../models/colorModel';
 import { Component, Input, OnInit } from '@angular/core';
 import { ConfirmationService, ConfirmEventType, MessageService } from 'primeng/api';
-import { BrandModel } from 'src/app/models/brandModel';
 
 @Component({
-  selector: 'app-brand-delete',
-  templateUrl: './brand-delete.component.html',
-  styleUrls: ['./brand-delete.component.css'],
+  selector: 'app-color-delete',
+  templateUrl: './color-delete.component.html',
+  styleUrls: ['./color-delete.component.css'],
   providers: [ConfirmationService,MessageService]
 })
-export class BrandDeleteComponent implements OnInit {
+export class ColorDeleteComponent implements OnInit {
 
-  @Input() brand : BrandModel;
+  @Input() color : ColorModel;
 
-  constructor(private confirmationService: ConfirmationService, private messageService: MessageService, private brandService: BrandService) { }
+  constructor(private confirmationService: ConfirmationService, private messageService: MessageService, private colorService: ColorService) { }
 
-  ngOnInit(): void {
-  } 
+  ngOnInit(): void { 
+  }
 
-  delete(brand:BrandModel){
-    if (brand != null) {
-      this.brandService.delete(brand.id).subscribe(response => {
+  delete(color:ColorModel){
+    if (color != null) {
+      this.colorService.delete(color.id).subscribe(response => {
         if (response.success) {
           this.messageService.add({severity:'success', summary:'Successful !', detail: response.message});
         }
@@ -31,14 +31,14 @@ export class BrandDeleteComponent implements OnInit {
     }
   }
 
-  confirm(brand:BrandModel) {
+  confirm(color:ColorModel) {
     this.confirmationService.confirm({
-        message: `<strong>${this.brand.name}</strong> isimli markayı gerçekten silmek istiyor musunuz ?`,
+        message: `<strong>${this.color.name}</strong> isimli rengi gerçekten silmek istiyor musunuz ?`,
         header: 'İşlem Onayı',
         icon: 'pi pi-exclamation-triangle',
         accept: () => {
             this.messageService.add({severity:'info', summary:'Onaylandı !', detail:'Silme işlemi onaylandı.'});
-            this.delete(brand);
+            this.delete(color);
         },
         reject: (type:any) => {
             switch(type) {

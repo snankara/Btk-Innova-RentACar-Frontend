@@ -6,7 +6,11 @@ export interface CarListModel{
     findexScore: number
     kilometer: number
     brandId: number
+    colorId: number
     brandName: string
     colorName: string
-    colorId: number
+    classTypeName: string
+    classTypeId: number
+    minCustomerAge: string
+    deleted: boolean
 }

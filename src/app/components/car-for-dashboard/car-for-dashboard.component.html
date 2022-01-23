@@ -1,0 +1,59 @@
+<p-toast></p-toast>
+<div class="card">
+    <p-toolbar styleClass="mb-4">
+        <ng-template pTemplate="left">
+            <app-car-add></app-car-add> 
+        </ng-template>
+    </p-toolbar>
+    <p-table #dt [value]="cars" [rows]="10" 
+    [globalFilterFields]="['brandName', 'colorName', 'classTypeName', 'description', 'modelYear', 'dailyPrice', 'findexScore', 'kilometer', 'minCustomerAge', 'deleted']" responsiveLayout="scroll"
+         [rowHover]="true" dataKey="id"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+                <h5 class="m-0">Filonuzu Yönetin</h5>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')" placeholder="Search..." />
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="brandName">Brand Name <p-sortIcon field="brandName"></p-sortIcon></th>
+                <th pSortableColumn="colorName">Color Name <p-sortIcon field="colorName"></p-sortIcon></th>
+                <th pSortableColumn="classTypeName">Class<p-sortIcon field="classTypeName"></p-sortIcon></th>            
+                <th pSortableColumn="description">Description<p-sortIcon field="description"></p-sortIcon></th>            
+                <th pSortableColumn="modelYear">Model Year<p-sortIcon field="modelYear"></p-sortIcon></th>            
+                <th pSortableColumn="dailyPrice">Daily Price<p-sortIcon field="dailyPrice"></p-sortIcon></th>            
+                <th pSortableColumn="findexScore">Findex Score<p-sortIcon field="findexScore"></p-sortIcon></th>            
+                <th pSortableColumn="kilometer">Kilometer<p-sortIcon field="kilometer"></p-sortIcon></th>            
+                <th pSortableColumn="minCustomerAge">Customer Age<p-sortIcon field="minCustomerAge"></p-sortIcon></th>            
+                <th pSortableColumn="deleted">Status<p-sortIcon field="deleted"></p-sortIcon></th>            
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-car>
+            <tr>
+                <td>{{car.brandName}}</td>
+                <td>{{car.colorName}}</td>
+                <td>{{car.classTypeName}}</td>
+                <td>{{car.description.substring(0,9)}}...</td>
+                <td>{{car.modelYear}}</td>
+                <td>{{car.dailyPrice | currency: "TRY":"₺":""}}</td>
+                <td>{{car.findexScore}}</td>
+                <td>{{car.kilometer}}</td>
+                <td>{{car.minCustomerAge}}</td>
+                <td><p-badge [value]="car.deleted" [severity]="car.deleted ? 'danger' : 'info'"></p-badge></td>
+                <td>
+                    <app-car-update class="d-inline-block" [car]="car"></app-car-update>
+                    <app-car-delete [car]="car"></app-car-delete>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between">
+                In total there are {{cars ? cars.length : 0 }} cars.
+            </div>
+        </ng-template>
+    </p-table>
+</div>

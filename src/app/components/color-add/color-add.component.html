@@ -1,8 +1,16 @@
-<h5>Color Add</h5>
+<p-toast></p-toast>
+<button pButton pRipple label="Ekle" icon="pi pi-plus" class="p-button-success btn-sm mr-2" (click)="openNew()"></button>
 <form [formGroup]="colorAddForm" (submit)="add()">
-    <span class="p-float-label">
-        <input id="float-input" type="text" pInputText formControlName="name"> 
-        <label for="float-input">Enter Color Name</label>
-        <button pButton pRipple type="submit" label="Add" class="p-button-raised p-button-success p-button-text ml-3"></button>
-    </span>
+<p-dialog [(visible)]="colorAddDialog" [style]="{width: '450px'}" header="Color Add" [modal]="true" styleClass="p-fluid">
+        <ng-template pTemplate="content">
+            <div class="field">
+                <label for="name">Name</label>
+                <input type="text" formControlName="name" pInputText id="name" autofocus />
+            </div>
+        </ng-template> 
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" type="button" (click)="hideDialog()"></button>
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" type="submit"></button>
+        </ng-template>
+</p-dialog>
 </form>

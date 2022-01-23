@@ -4,21 +4,13 @@ export const items = [
         icon:'pi pi-fw pi-car',
         items: [
             {
-                label: 'Araba Listesi',
-                icon:'pi pi-fw pi-list'
+                label: 'Araba İşlemleri',
+                icon:'pi pi-fw pi-list',
+                routerLink: ["cars"]
             },
             {
                 label: 'Kiradaki Arabalar',
                 icon:'pi pi-fw pi-inbox'
-            },
-            {
-                label: 'Silinen Arabalar',
-                icon:'pi pi-fw pi-trash'
-            },
-            {
-                label: 'Ekle',
-                icon:'pi pi-fw pi-calendar-plus',
-                routerLink: ['car-add']
             },
         ]
         },
@@ -38,17 +30,9 @@ export const items = [
         icon:'pi pi-fw pi-palette',
         items: [
             {
-                label: 'Renk Listesi',
-                icon:'pi pi-fw pi-list'
-            },
-            {
-                label: 'Silinen Renkler',
-                icon:'pi pi-fw pi-trash'
-            },
-            {
-                label: 'Ekle',
-                icon:'pi pi-fw pi-calendar-plus',
-                routerLink: ['color-add']
+                label: 'Renk İşlemleri',
+                icon:'pi pi-fw pi-list',
+                routerLink: ["colors"]
             },
         ]
         },

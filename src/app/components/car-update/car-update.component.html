@@ -1,0 +1,65 @@
+<p-toast></p-toast>
+<button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" [disabled]="car.deleted" (click)="openDialog()"></button>
+<form [formGroup]="carUpdateForm" (submit)="update()">
+<p-dialog [(visible)]="carUpdateDialog" [style]="{width: '450px'}" header="Car Add" [modal]="true" styleClass="p-fluid">
+        <ng-template pTemplate="content">
+
+            <div class="formgrid grid">
+                <div class="field col">
+                    <label for="brandId">Select Brand</label>
+                    <p-dropdown inputId="brandId" formControlName="brandId" [options]="brands" placeholder="Select Brand" optionValue="id" optionLabel="name"></p-dropdown>
+                </div>
+
+                <div class="field col">
+                    <label for="colorId">Select Color</label>
+                    <p-dropdown inputId="colorId" formControlName="colorId" [options]="colors" placeholder="Select Color" optionValue="id" optionLabel="name"></p-dropdown>
+                </div>
+            </div>
+
+            <div class="formgrid grid">
+                <div class="field col">
+                    <label for="minFindexScore">Min. Findex</label>
+                    <p-inputNumber id="minFindexScore" formControlName="minFindexScore"></p-inputNumber>
+                </div>
+                <div class="field col">
+                    <label for="minCustomerAge">Min. Age</label>
+                    <p-inputNumber id="minCustomerAge" formControlName="minCustomerAge"></p-inputNumber>
+                </div>
+            </div>
+
+            <div class="formgrid grid">
+
+                <div class="field col">
+                    <label for="classTypeId">Select Segment</label>
+                    <p-dropdown inputId="classTypeId" [options]="classTypes" formControlName="classTypeId" placeholder="Select Segment" optionValue="id" optionLabel="classTypeName"></p-dropdown>
+                </div>
+                <div class="field col">
+                    <label for="price">Daily Price</label>
+                    <p-inputNumber id="price" mode="currency" formControlName="dailyPrice" currency="TRY" locale="tr-TR"></p-inputNumber>
+                </div>
+            </div>
+
+            <div class="formgrid grid">
+                <div class="field col">
+                    <label for="kilometer">Kilometer</label>
+                    <p-inputNumber id="kilometer" formControlName="kilometer"></p-inputNumber>
+                </div>
+
+                <div class="field col">
+                    <label for="modelYear">Model Year</label>
+                    <p-inputNumber formControlName="modelYear" mode="decimal" inputId="withoutgrouping" [useGrouping]="false"></p-inputNumber>
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="description">Description</label>
+                <textarea id="description" pInputTextarea formControlName="description" required rows="3" cols="20"></textarea>
+            </div>
+
+        </ng-template> 
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" type="button" (click)="hideDialog()"></button>
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" type="submit"></button>
+        </ng-template>
+</p-dialog>
+</form>
