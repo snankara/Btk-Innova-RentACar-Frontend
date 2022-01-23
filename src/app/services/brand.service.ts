@@ -1,3 +1,4 @@
+import { UpdateBrandModel } from './../models/updateBrandModel';
 import { CreateBrandModel } from './../models/createBrandModel';
 import { ResponseModel } from './../models/responseModel';
 import { BrandListModel } from './../models/brandListModel';
@@ -20,7 +21,15 @@ export class BrandService {
     return this.httpClient.get<ListResponseModel<BrandListModel>>(`${this.apiUrl}/getall`);
   }
 
-  add(brand: CreateBrandModel):Observable<ResponseModel>{
+  add(brand: CreateBrandModel):Observable<ResponseModel>{    
     return this.httpClient.post<ResponseModel>(`${this.apiUrl}/add`, brand);
+  }
+
+  update(brand: UpdateBrandModel):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(`${this.apiUrl}/update`, brand);
+  }
+
+  delete(brandId: number):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(`${this.apiUrl}/delete?id=${brandId}`,"");
   }
 }

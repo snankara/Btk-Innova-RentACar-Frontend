@@ -9,9 +9,12 @@ import { MenuItem } from 'primeng/api';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
   items: MenuItem[] = items;
+  constructor() { }
+
   ngOnInit(): void {
+    
+    
   //   this.items = [
   //     {
   //         label: 'File',

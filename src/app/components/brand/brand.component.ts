@@ -1,3 +1,4 @@
+import { MessageService } from 'primeng/api';
 import { BrandListModel } from './../../models/brandListModel';
 import { BrandService } from './../../services/brand.service';
 import { Component, OnInit } from '@angular/core';
@@ -5,11 +6,12 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-brand',
   templateUrl: './brand.component.html',
-  styleUrls: ['./brand.component.css']
+  styleUrls: ['./brand.component.scss'],
+  providers: [MessageService]
 })
 export class BrandComponent implements OnInit {
 
-  brands : BrandListModel[] = []
+  brands : BrandListModel[]
   dataLoaded : boolean = false;
 
   constructor(private brandService: BrandService) { }
@@ -24,5 +26,4 @@ export class BrandComponent implements OnInit {
       this.dataLoaded = true;
     })
   }
-
 }

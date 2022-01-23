@@ -1,4 +1,4 @@
-export interface BrandListModel{
+export interface BrandModel{
     id: number
     name: string
     deleted: boolean

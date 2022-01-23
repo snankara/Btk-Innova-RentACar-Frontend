@@ -28,6 +28,16 @@ import {CalendarModule} from 'primeng/calendar';
 import {MenubarModule} from 'primeng/menubar';
 import { NavComponent } from './components/shared/nav/nav.component';
 import { RentalAddComponent } from './components/rental-add/rental-add.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import {PanelMenuModule} from 'primeng/panelmenu';
+
+import {ToastModule} from 'primeng/toast';
+import {ToolbarModule} from 'primeng/toolbar';
+import {TableModule} from 'primeng/table';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import {BadgeModule} from 'primeng/badge';
+import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
+import { BrandDeleteComponent } from './components/brand-delete/brand-delete.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +49,10 @@ import { RentalAddComponent } from './components/rental-add/rental-add.component
     BrandAddComponent,
     ColorAddComponent,
     NavComponent,
-    RentalAddComponent
+    RentalAddComponent,
+    DashboardComponent,
+    BrandUpdateComponent,
+    BrandDeleteComponent
   ],
   imports: [
     BrowserModule,
@@ -47,17 +60,24 @@ import { RentalAddComponent } from './components/rental-add/rental-add.component
     BrowserAnimationsModule,
     HttpClientModule,
     DataViewModule,
+    ToastModule,
+    ToolbarModule,
+    TableModule,
     ButtonModule,
+    ConfirmDialogModule,
     PanelModule,
     DropdownModule,
     DialogModule,
+    BadgeModule,
     InputTextModule,
     RatingModule,
     RippleModule,
     TabViewModule,
+    PanelMenuModule,
     PasswordModule,
     InputNumberModule,
     CalendarModule,
+    
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot({

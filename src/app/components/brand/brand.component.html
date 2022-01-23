@@ -1,5 +1,43 @@
-
-<h1>Brands</h1>
-<ul>
-    <li *ngFor="let brand of brands">{{brand.name}}</li>
-</ul>
+<p-toast></p-toast>
+<div class="card">
+    <p-toolbar styleClass="mb-4">
+        <ng-template pTemplate="left">
+            <app-brand-add></app-brand-add>
+        </ng-template>
+    </p-toolbar>
+    <p-table #dt [value]="brands" [rows]="10" [globalFilterFields]="['name', 'deleted']" responsiveLayout="scroll"
+         [rowHover]="true" dataKey="id"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+                <h5 class="m-0">Markalarınızı Yönetin</h5>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')" placeholder="Search name or status" />
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+                <th pSortableColumn="deleted">Status <p-sortIcon field="deleted"></p-sortIcon></th>
+                <th></th> 
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-brand>
+            <tr>
+                <td>{{brand.name}}</td>
+                <td><p-badge [value]="brand.deleted" [severity]="brand.deleted ? 'danger' : 'info'"></p-badge></td>
+                <td>
+                    <app-brand-update class="d-inline-block" [brand]="brand"></app-brand-update>
+                    <app-brand-delete [brand]="brand"></app-brand-delete>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between">
+                In total there are {{brands ? brands.length : 0 }} brands.
+            </div>
+        </ng-template>
+    </p-table>
+</div>
