@@ -45,6 +45,11 @@ import { CarAddComponent } from './components/car-add/car-add.component';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CarUpdateComponent } from './components/car-update/car-update.component';
 import { CarDeleteComponent } from './components/car-delete/car-delete.component';
+import {TimelineModule} from 'primeng/timeline';
+import {StepsModule} from 'primeng/steps';
+import { RentStepComponent } from './components/rent-step/rent-step.component';
+import { TagModule } from 'primeng/tag';
+import { AdditionalComponent } from './components/additional/additional.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +70,9 @@ import { CarDeleteComponent } from './components/car-delete/car-delete.component
     CarForDashboardComponent,
     CarAddComponent,
     CarUpdateComponent,
-    CarDeleteComponent
+    CarDeleteComponent,
+    RentStepComponent,
+    AdditionalComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +80,7 @@ import { CarDeleteComponent } from './components/car-delete/car-delete.component
     BrowserAnimationsModule,
     HttpClientModule,
     DataViewModule,
+    TagModule,
     ToastModule,
     ToolbarModule,
     TableModule,
@@ -80,11 +88,13 @@ import { CarDeleteComponent } from './components/car-delete/car-delete.component
     ConfirmDialogModule,
     PanelModule,
     DropdownModule,
+    StepsModule,
     DialogModule,
     BadgeModule,
     InputTextModule,
     InputTextareaModule,
     RatingModule,
+    TimelineModule,
     RippleModule,
     TabViewModule,
     PanelMenuModule,

@@ -46,7 +46,7 @@ export class CarUpdateComponent implements OnInit, AfterViewChecked {
       dailyPrice: [this.car.dailyPrice, Validators.required],
       modelYear: [this.car.modelYear, Validators.required],
       description: [this.car.description, Validators.required],
-      minFindexScore: [this.car.findexScore, Validators.required],
+      minFindexScore: [this.car.minFindexScore, Validators.required],
       minCustomerAge: [this.car.minCustomerAge, Validators.required],
       classTypeId: [this.car.classTypeId, Validators.required],
       kilometer: [this.car.kilometer, Validators.required],

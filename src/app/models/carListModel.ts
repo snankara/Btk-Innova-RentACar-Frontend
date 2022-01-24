@@ -3,7 +3,7 @@ export interface CarListModel{
     dailyPrice: number
     modelYear: number
     description: string
-    findexScore: number
+    minFindexScore: number
     kilometer: number
     brandId: number
     colorId: number

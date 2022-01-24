@@ -1,3 +1,5 @@
+import { AdditionalComponent } from './components/additional/additional.component';
+import { RentStepComponent } from './components/rent-step/rent-step.component';
 import { CarForDashboardComponent } from './components/car-for-dashboard/car-for-dashboard.component';
 import { ColorComponent } from './components/color/color.component';
 import { BrandComponent } from './components/brand/brand.component';
@@ -19,6 +21,12 @@ const routes: Routes = [
     {path: 'brand-add', component: BrandAddComponent},
     {path: 'color-add', component: ColorAddComponent},
     {path: 'rental-add', component: RentalAddComponent},  
+  ]},
+
+  {path: 'rentstep', component: RentStepComponent, children: [
+    {path: 'car/:id', component: CarDetailComponent},
+    {path: 'rent/:id', component: RentalAddComponent},
+    {path: 'additional/:id', component: AdditionalComponent},
   ]},
 
   // {path: 'brand-add', component: BrandAddComponent},

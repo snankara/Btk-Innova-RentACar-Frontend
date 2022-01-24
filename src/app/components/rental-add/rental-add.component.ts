@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CityListModel } from 'src/app/models/cityListModel';
 import { CityService } from 'src/app/services/city.service';
@@ -20,7 +20,7 @@ export class RentalAddComponent implements OnInit {
 
   constructor(private rentalService: RentalService, private activatedRoute: ActivatedRoute, 
     private formBuilder:FormBuilder, private cityService: CityService, 
-    private datePipe:DatePipe, private toastrService: ToastrService) { }
+    private datePipe:DatePipe, private toastrService: ToastrService, private router: Router) { }
 
     ngOnInit(): void {
       this.getRouteCarId();
@@ -73,4 +73,16 @@ export class RentalAddComponent implements OnInit {
     getFormattedDate(date: Date){
      return this.datePipe.transform(new Date(date), 'yyyy-MM-dd')
     }
+
+    nextPage() {
+      if (this.rentalAddForm.valid) {
+        this.router.navigate(['rentstep/additional/'+this.carId]);
+        return;  
+      }
+    }
+
+    prevPage(){
+      this.router.navigate(['rentstep/car/'+this.carId]);
+    }
+  
 }

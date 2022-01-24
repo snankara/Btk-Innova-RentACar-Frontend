@@ -1,4 +1,4 @@
-<h1>Rental Add</h1>
+<!-- <h1>Rental Add</h1>
 <form [formGroup]="rentalAddForm" (submit)="add()">
         <div class="grid p-fluid">
             <div class="field col-12 md:col-2">
@@ -38,4 +38,88 @@
             </div>
         </div>
         <button pButton pRipple type="submit" label="Add" class="p-button-raised p-button-success p-button-text ml-3"></button>
-</form>
+</form> -->
+
+
+
+
+<div class="stepsdemo-content m-4">
+
+    <p-card>
+        <ng-template pTemplate="title">
+            <div class="text-align">Kiralama Bilgilerinizi Girin</div>
+        </ng-template>
+        <ng-template pTemplate="subtitle">
+            <div class="text-align">Lütfen kiralama bilgilerinizi girin.</div>
+        </ng-template>
+
+
+        <ng-template pTemplate="content">
+            <div class="row justify-content-evenly">
+                <!-- <div class="col-md-4 text-align">
+                    <p-card styleClass="p-card-shadow">
+                        <ng-template pTemplate="content">
+                            <img alt="Card" class="border-radius" src="https://is1-ssl.mzstatic.com/image/thumb/Purple122/v4/52/39/4d/52394d54-0782-e9ca-ca72-7336a0870249/source/256x256bb.jpg">
+                        </ng-template>
+                    </p-card>    
+                </div> -->
+                <div class="col-md-6">
+                    <p-card>
+                        <ng-template pTemplate="content">
+
+                            <form [formGroup]="rentalAddForm" (submit)="add()">
+                                <div class="grid p-fluid">
+                                    <div class="field col-6">
+                                        <small><label for="rentMile">Rent Kilometer</label></small>
+                                        <p-inputNumber formControlName="rentedKilometer" inputId="rentMile" suffix=" km">
+                                        </p-inputNumber>
+                                    </div>
+                        
+                                    <div class="field col-6">
+                                        <small><label for="returnMile">Return Kilometer</label></small>
+                                        <p-inputNumber formControlName="returnedKilometer" inputId="returnMile" suffix=" km">
+                                        </p-inputNumber>
+                                    </div>
+                                </div>
+                        
+                                <div class="grid p-fluid">
+                                    <div class="field col-6">
+                                        <small><label for="buttonbar">Rent Date</label></small>
+                                        <p-calendar [showButtonBar]="true" formControlName="rentDate" inputId="buttonbar"></p-calendar>
+                                    </div>
+                        
+                                    <div class="field col-6">
+                                        <small><label for="buttonbar2">Return Date</label></small>
+                                        <p-calendar [showButtonBar]="true" formControlName="returnDate" inputId="buttonbar2"></p-calendar>
+                                    </div>
+                                </div>
+                        
+                                <div class="grid p-fluid">
+                                    <div class="field col-6">
+                                        <small><label for="buttonbar">Rent City</label></small>
+                                        <p-dropdown [options]="cities" placeholder="Select a Rent City" formControlName="rentedCityId" optionValue="id" optionLabel="name" [showClear]="true"></p-dropdown>
+                                    </div>
+                        
+                                    <div class="field col-6">
+                                        <small><label for="buttonbar">Return City</label></small>
+                                        <p-dropdown [options]="cities" placeholder="Select a Return City" formControlName="returnedCityId" optionValue="id" optionLabel="name" [showClear]="true"></p-dropdown>
+                                    </div>
+                                </div>
+                                <!-- <button pButton pRipple type="submit" label="Add" class="p-button-raised p-button-success p-button-text ml-3"></button> -->
+                        </form>
+                        
+
+
+                        </ng-template>
+                    </p-card> 
+                </div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="footer">
+            <div class="grid grid-nogutter justify-content-end">
+                <p-button label="Back" (onClick)="prevPage()" icon="pi pi-angle-left" styleClass="p-button-sm p-button-rounded p-button-outlined mr-2"></p-button>            
+                <p-button label="Next" [disabled]="rentalAddForm.invalid" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right" styleClass="p-button-sm p-button-rounded p-button-outlined"></p-button>
+            </div>
+        </ng-template>
+    </p-card>
+</div>

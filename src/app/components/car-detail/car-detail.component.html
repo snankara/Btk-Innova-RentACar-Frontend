@@ -1,11 +1,88 @@
-<p-card header="{{car?.brandName}}" subheader="{{car?.colorName}}" [style]="{width: '360px'}" styleClass="p-card-shadow">
-    <ng-template pTemplate="header">
-        <img alt="Card" src="https://is1-ssl.mzstatic.com/image/thumb/Purple122/v4/52/39/4d/52394d54-0782-e9ca-ca72-7336a0870249/source/256x256bb.jpg">
-    </ng-template>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-        quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
-    <ng-template pTemplate="footer">
-        <p-button label="Kirala" icon="pi pi-check" routerLink="/rental-add/{{car?.id}}"></p-button>
-        <p-button label="Geri Dön" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
-    </ng-template>
-</p-card>
+<div class="stepsdemo-content m-4">
+    <p-card>
+        <ng-template pTemplate="title">
+            <div class="text-align">Seçilen Araba Bilgileri</div>
+        </ng-template>
+        <ng-template pTemplate="subtitle">
+            <div class="text-align">Aracınızın detaylarını gözden geçirin.</div>
+        </ng-template>
+        <ng-template pTemplate="content">
+            <div class="row justify-content-evenly">
+                <div class="col-md-4 text-align">
+                    <p-card styleClass="p-card-shadow">
+                        <ng-template pTemplate="content">
+                            <img alt="Card" class="border-radius" src="https://is1-ssl.mzstatic.com/image/thumb/Purple122/v4/52/39/4d/52394d54-0782-e9ca-ca72-7336a0870249/source/256x256bb.jpg">
+                        </ng-template>
+                    </p-card>    
+                </div>
+                <div class="col-md-4">
+                    <p-card>
+                        <ng-template pTemplate="listItem">
+                            <div class="text-align">Araç Detayları<hr></div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="m-3 d-inline-block">
+                                            <i class="pi pi-tag product-category-icon"></i><span class="product-category ml-2">{{car?.brandName}}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="m-3 d-inline-block">
+                                            <i class="pi pi-palette product-category-icon"></i><span class="product-category ml-2">{{car?.colorName}}</span>
+                                        </div>    
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="m-3 d-inline-block">
+                                            <i class="pi pi-money-bill product-category-icon"></i><span class="product-category ml-2">{{car?.dailyPrice | currency: "TRY":"₺":""}}</span>
+                                        </div>        
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="m-3 d-inline-block">
+                                            <i class="pi pi-calendar product-category-icon"></i><span class="product-category ml-2">{{car?.modelYear}}</span>
+                                        </div>        
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="m-3 d-inline-block">
+                                            <i class="pi pi-slack product-category-icon"></i><span class="product-category ml-2">{{car?.classTypeName}}</span>
+                                        </div>        
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="m-3 d-inline-block">
+                                            <i class="pi pi-ticket product-category-icon"></i><span class="product-category ml-2">{{car?.kilometer}} km</span>
+                                        </div>        
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="m-3 d-inline-block">
+                                            <i class="pi pi-chart-bar product-category-icon"></i><span class="product-category ml-2"> {{car?.minFindexScore}} <small>Findex</small> </span>
+                                        </div>        
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="m-3 d-inline-block">
+                                            <i class="pi pi-unlock product-category-icon"></i><span class="product-category ml-2">{{car?.minCustomerAge}} <small>age</small></span>
+                                        </div>
+        
+                                    </div>
+                                </div>
+                        </ng-template>
+                    </p-card> 
+                </div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="footer">
+            <div class="grid grid-nogutter justify-content-end">
+                <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right" styleClass="p-button-sm p-button-rounded p-button-outlined"></p-button>
+            </div>
+        </ng-template>
+    </p-card>
+</div>

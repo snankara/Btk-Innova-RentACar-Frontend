@@ -2,8 +2,8 @@ export interface CarModel{
     id: number
     dailyPrice: number
     modelYear: number
-    description: string
-    findexScore: number
+    description: string 
+    minFindexScore: number
     kilometer: number
     brandId: number
     colorId: number
