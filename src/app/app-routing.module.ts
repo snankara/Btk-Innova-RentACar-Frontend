@@ -1,3 +1,4 @@
+import { PaymentComponent } from './components/payment/payment.component';
 import { AdditionalComponent } from './components/additional/additional.component';
 import { RentStepComponent } from './components/rent-step/rent-step.component';
 import { CarForDashboardComponent } from './components/car-for-dashboard/car-for-dashboard.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
     {path: 'car/:id', component: CarDetailComponent},
     {path: 'rent/:id', component: RentalAddComponent},
     {path: 'additional/:id', component: AdditionalComponent},
+    {path: 'payment/:id', component: PaymentComponent},
   ]},
 
   // {path: 'brand-add', component: BrandAddComponent},

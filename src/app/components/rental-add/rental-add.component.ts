@@ -1,3 +1,5 @@
+import { RentalModel } from './../../models/rentalModel';
+import { MessageService } from 'primeng/api';
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -11,16 +13,18 @@ import { RentalService } from 'src/app/services/rental.service';
   selector: 'app-rental-add',
   templateUrl: './rental-add.component.html',
   styleUrls: ['./rental-add.component.css'],
-  providers: [DatePipe]
+  providers: [DatePipe, MessageService]
 })
 export class RentalAddComponent implements OnInit {
+
   rentalAddForm: FormGroup
   cities: CityListModel[]
+  rental: RentalModel
   carId: number
 
   constructor(private rentalService: RentalService, private activatedRoute: ActivatedRoute, 
     private formBuilder:FormBuilder, private cityService: CityService, 
-    private datePipe:DatePipe, private toastrService: ToastrService, private router: Router) { }
+    private datePipe:DatePipe, private messageService: MessageService, private router: Router) { }
 
     ngOnInit(): void {
       this.getRouteCarId();
@@ -55,10 +59,12 @@ export class RentalAddComponent implements OnInit {
         let rentalModel = Object.assign({}, this.rentalAddForm.value)
         this.rentalService.rentForIndividualCustomer(rentalModel).subscribe(response => {
           if (response.success) {
-            this.toastrService.success(response.message, "Succesful !")
+            this.rental = response.data
+            this.messageService.add({severity:'success', summary: 'Successful', detail: response.message, life: 3000});
+            this.nextPage()
           }
           else{
-            this.toastrService.error(response.message, "Error !")
+            this.messageService.add({severity:'error', summary: 'Error', detail: response.message, life: 3000});
           }
         })
       }
@@ -75,8 +81,8 @@ export class RentalAddComponent implements OnInit {
     }
 
     nextPage() {
-      if (this.rentalAddForm.valid) {
-        this.router.navigate(['rentstep/additional/'+this.carId]);
+      if (this.rental) {
+        this.router.navigate(['rentstep/additional/'+this.rental.id]);
         return;  
       }
     }

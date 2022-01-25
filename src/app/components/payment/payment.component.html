@@ -1,10 +1,10 @@
 <div class="stepsdemo-content m-4">
     <p-card>
         <ng-template pTemplate="title">
-            <div class="text-align">Kiralama Bilgilerinizi Girin</div>
+            <div class="text-align">Ödeme Bilgilerinizi Girin</div>
         </ng-template>
         <ng-template pTemplate="subtitle">
-            <div class="text-align">Lütfen kiralama bilgilerinizi girin.</div>
+            <div class="text-align">Lütfen ödeme için gerekli bilgileri girin.</div>
         </ng-template>
         <ng-template pTemplate="content">
             <div class="row justify-content-evenly">
@@ -12,7 +12,7 @@
                     <p-card>
                         <ng-template pTemplate="content">
 
-                            <form [formGroup]="rentalAddForm" (submit)="add()">
+                            <form [formGroup]="paymentAddForm" (submit)="add()">
                                 <div class="grid p-fluid">
                                     <div class="field col-6">
                                         <small><label for="rentMile">Rent Kilometer</label></small>
@@ -39,7 +39,7 @@
                                     </div>
                                 </div>
                         
-                                <div class="grid p-fluid">
+                                <!-- <div class="grid p-fluid">
                                     <div class="field col-6">
                                         <small><label for="buttonbar">Rent City</label></small>
                                         <p-dropdown [options]="cities" placeholder="Select a Rent City" formControlName="rentedCityId" optionValue="id" optionLabel="name" [showClear]="true"></p-dropdown>
@@ -49,7 +49,7 @@
                                         <small><label for="buttonbar">Return City</label></small>
                                         <p-dropdown [options]="cities" placeholder="Select a Return City" formControlName="returnedCityId" optionValue="id" optionLabel="name" [showClear]="true"></p-dropdown>
                                     </div>
-                                </div>
+                                </div> -->
                         </form>
                         </ng-template>
                     </p-card> 
@@ -58,7 +58,7 @@
         </ng-template>
         <ng-template pTemplate="footer">
             <div class="grid grid-nogutter justify-content-end">
-                <p-button label="Back" (onClick)="prevPage()" icon="pi pi-angle-left" styleClass="p-button-sm p-button-rounded p-button-outlined mr-2"></p-button>            
+                <p-button label="Back" icon="pi pi-angle-left" styleClass="p-button-sm p-button-rounded p-button-outlined mr-2"></p-button>            
                 <p-button label="Next" (onClick)="add()" icon="pi pi-angle-right" iconPos="right" styleClass="p-button-sm p-button-rounded p-button-outlined"></p-button>
             </div>
         </ng-template>

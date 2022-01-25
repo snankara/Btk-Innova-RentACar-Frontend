@@ -6,7 +6,7 @@
         </ng-template>
     </p-toolbar>
     <p-table #dt [value]="cars" [rows]="10" 
-    [globalFilterFields]="['brandName', 'colorName', 'classTypeName', 'description', 'modelYear', 'dailyPrice', 'findexScore', 'kilometer', 'minCustomerAge', 'deleted']" responsiveLayout="scroll"
+    [globalFilterFields]="['brandName', 'colorName', 'classTypeName', 'description', 'modelYear', 'dailyPrice', 'minFindexScore', 'kilometer', 'minCustomerAge', 'deleted']" responsiveLayout="scroll"
          [rowHover]="true" dataKey="id"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
         <ng-template pTemplate="caption">
@@ -26,7 +26,7 @@
                 <th pSortableColumn="description">Description<p-sortIcon field="description"></p-sortIcon></th>            
                 <th pSortableColumn="modelYear">Model Year<p-sortIcon field="modelYear"></p-sortIcon></th>            
                 <th pSortableColumn="dailyPrice">Daily Price<p-sortIcon field="dailyPrice"></p-sortIcon></th>            
-                <th pSortableColumn="findexScore">Findex Score<p-sortIcon field="findexScore"></p-sortIcon></th>            
+                <th pSortableColumn="minFindexScore">Findex Score<p-sortIcon field="minFindexScore"></p-sortIcon></th>            
                 <th pSortableColumn="kilometer">Kilometer<p-sortIcon field="kilometer"></p-sortIcon></th>            
                 <th pSortableColumn="minCustomerAge">Customer Age<p-sortIcon field="minCustomerAge"></p-sortIcon></th>            
                 <th pSortableColumn="deleted">Status<p-sortIcon field="deleted"></p-sortIcon></th>            
@@ -40,7 +40,7 @@
                 <td>{{car.description.substring(0,9)}}...</td>
                 <td>{{car.modelYear}}</td>
                 <td>{{car.dailyPrice | currency: "TRY":"₺":""}}</td>
-                <td>{{car.findexScore}}</td>
+                <td>{{car.minFindexScore}}</td>
                 <td>{{car.kilometer}}</td>
                 <td>{{car.minCustomerAge}}</td>
                 <td><p-badge [value]="car.deleted" [severity]="car.deleted ? 'danger' : 'info'"></p-badge></td>

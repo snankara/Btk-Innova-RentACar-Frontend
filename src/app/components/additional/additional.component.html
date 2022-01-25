@@ -1,1 +1,25 @@
-<p>additional works!</p>
+<div style="text-align: end;">
+    <i class="pi pi-shopping-bag mr-4 p-text-secondary" pBadge style="font-size: 2rem" [value]="'₺'+ showSelectedAdditionalAmount().toString()"></i>
+</div>
+<p-pickList [source]="additionals" [target]="selectedAdditionals" sourceHeader="Mevcut Ek Hizmetlerimiz" 
+    [targetHeader]="'Seçilen Ek Hizmetler'" 
+    [dragdrop]="true"
+    [responsive]="true" filterBy="additionalName"
+    sourceFilterPlaceholder="Search by name" targetFilterPlaceholder="Search by name">
+    <ng-template let-additional pTemplate="item">
+        <div class="product-item">
+            <div class="product-list-detail">
+                <h6 class="mb-2">{{additional.additionalName}}</h6>
+            </div>
+            <div class="product-list-action">
+                <h6 class="mb-2">{{additional.additionalAmount | currency: "TRY":"₺":""}}</h6>
+            </div>
+        </div>
+    </ng-template>
+</p-pickList>
+<div class="m-4">
+    <div class="grid grid-nogutter justify-content-end">
+        <p-button label="Back" (onClick)="prevPage()" icon="pi pi-angle-left" styleClass="p-button-sm p-button-rounded p-button-outlined mr-2"></p-button>            
+        <p-button label="Next" (onClick)="add()" icon="pi pi-angle-right" iconPos="right" styleClass="p-button-sm p-button-rounded p-button-outlined"></p-button>
+    </div>
+</div>

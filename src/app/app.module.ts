@@ -50,6 +50,8 @@ import {StepsModule} from 'primeng/steps';
 import { RentStepComponent } from './components/rent-step/rent-step.component';
 import { TagModule } from 'primeng/tag';
 import { AdditionalComponent } from './components/additional/additional.component';
+import {PickListModule} from 'primeng/picklist';
+import { PaymentComponent } from './components/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +74,8 @@ import { AdditionalComponent } from './components/additional/additional.componen
     CarUpdateComponent,
     CarDeleteComponent,
     RentStepComponent,
-    AdditionalComponent
+    AdditionalComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -86,6 +89,7 @@ import { AdditionalComponent } from './components/additional/additional.componen
     TableModule,
     ButtonModule,
     ConfirmDialogModule,
+    PickListModule,
     PanelModule,
     DropdownModule,
     StepsModule,

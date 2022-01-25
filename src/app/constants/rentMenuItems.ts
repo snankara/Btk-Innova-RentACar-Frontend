@@ -12,7 +12,7 @@ export const items = [
         routerLink: 'additional'
     },
     {
-        label: 'Confirmation',
-        routerLink: 'confirmation'
+        label: 'Payment',
+        routerLink: 'payment'
     }
 ]
