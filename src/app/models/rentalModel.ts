@@ -3,7 +3,6 @@ export interface RentalModel{
     rentDate: string
     returnDate: string
     rentedKilometer: number
-    returnedKilometer: number
     customerId: number
     carId: number
     rentedCityId: number

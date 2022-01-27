@@ -36,7 +36,7 @@ export class RentalAddComponent implements OnInit {
         rentDate: ["", Validators.required],
         returnDate: ["", Validators.required],
         rentedKilometer: ["", Validators.required],
-        returnedKilometer: ["", Validators.required],
+        // returnedKilometer: ["", Validators.required],
         customerId: [1, Validators.required],
         carId: [this.carId ,Validators.required],
         rentedCityId: ["", Validators.required],
@@ -52,12 +52,15 @@ export class RentalAddComponent implements OnInit {
 
     add(){
       if (this.rentalAddForm.valid) {
+        
         this.rentalAddForm.value.rentDate = this.getFormattedDate(this.rentalAddForm.value.rentDate);
         this.rentalAddForm.value.returnDate = this.getFormattedDate(this.rentalAddForm.value.returnDate)
         
         let rentalModel = Object.assign({}, this.rentalAddForm.value)
         this.rentalService.rentForIndividualCustomer(rentalModel).subscribe(response => {
           if (response.success) {
+            console.log(response.data);
+            
             this.rental = response.data
             this.messageService.add({severity:'success', summary: 'Successful', detail: response.message, life: 3000});
             this.nextPage()

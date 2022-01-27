@@ -38,6 +38,7 @@ export class PaymentComponent implements OnInit {
       this.paymentService.add(paymentModel).subscribe(response => {
         if (response.success) {
           this.payment = response.data
+          this.messageService.add({severity:'success', summary: 'Successful', detail: response.message, life: 3000});
           this.addInvoice()
         }
         else{

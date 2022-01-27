@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <div class="stepsdemo-content m-4">
     <p-card>
         <ng-template pTemplate="title">
@@ -20,11 +21,11 @@
                                         </p-inputNumber>
                                     </div>
                         
-                                    <div class="field col-6">
+                                    <!-- <div class="field col-6">
                                         <small><label for="returnMile">Return Kilometer</label></small>
                                         <p-inputNumber formControlName="returnedKilometer" inputId="returnMile" suffix=" km">
                                         </p-inputNumber>
-                                    </div>
+                                    </div> -->
                                 </div>
                         
                                 <div class="grid p-fluid">
@@ -58,7 +59,7 @@
         </ng-template>
         <ng-template pTemplate="footer">
             <div class="grid grid-nogutter justify-content-end">
-                <p-button label="Back" (onClick)="prevPage()" icon="pi pi-angle-left" styleClass="p-button-sm p-button-rounded p-button-outlined mr-2"></p-button>            
+                <!-- <p-button label="Back" (onClick)="prevPage()" icon="pi pi-angle-left" styleClass="p-button-sm p-button-rounded p-button-outlined mr-2"></p-button>             -->
                 <p-button label="Next" (onClick)="add()" icon="pi pi-angle-right" iconPos="right" styleClass="p-button-sm p-button-rounded p-button-outlined"></p-button>
             </div>
         </ng-template>

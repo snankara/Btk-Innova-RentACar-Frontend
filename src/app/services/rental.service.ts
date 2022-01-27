@@ -14,7 +14,7 @@ export class RentalService {
   apiUrl: string = `${environment.apiUrl}rentals`
   constructor(private httpClient: HttpClient) { }
 
-  rentForIndividualCustomer(rental: CreateRentalModel): Observable<SingleResponseModel<RentalModel>>{
+  rentForIndividualCustomer(rental: CreateRentalModel): Observable<SingleResponseModel<RentalModel>>{    
     return this.httpClient.post<SingleResponseModel<RentalModel>>(`${this.apiUrl}/rentforindividualcustomer`, rental);
   }
 

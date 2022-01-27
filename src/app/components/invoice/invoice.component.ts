@@ -4,7 +4,13 @@ import { InvoiceListModel } from './../../models/invoiceListModel';
 import { InvoiceService } from './../../services/invoice.service';
 import { Component, OnInit } from '@angular/core';
 import jsPDF from 'jspdf'
-import autoTable from 'jspdf-autotable'
+import autoTable from 'jspdf-autotable';
+
+// import autoTable from 'jspdf-autotable';
+// import autoTable from 'jspdf-autotable'
+// declare var jsPDF: any;
+// var jsPDF = require('jspdf'); 
+// require('jspdf-autotable');
 
 @Component({
   selector: 'app-invoice',
@@ -45,25 +51,6 @@ export class InvoiceComponent implements OnInit {
       { field: 'invoiceDate', header: 'Invoice Date' }
   ];
   }
-
-
-  exportPdf() {
-    const doc = new jsPDF("l")
-    autoTable(doc, {
-      head: [this.exportColumns],
-      body: [[this.invoices.map(item => item.brandName),
-        this.invoices.map(item => item.colorName),
-        this.invoices.map(item => item.dailyPrice+" tl"),
-        this.invoices.map(item => item.paymentAmount+" tl"),
-        this.invoices.map(item => item.rentedCity),
-        this.invoices.map(item => item.returnedCity),
-        this.invoices.map(item => item.rentDate),
-        this.invoices.map(item => item.invoiceDate)
-      ]],
-    })
-    doc.save('invoices.pdf')
-}
-
 
 setExportColumns(){
   this.exportColumns = this.columns.map(col => ({title: col.header, dataKey: col.field}));
