@@ -59,5 +59,16 @@ export const items = [
                 icon:'pi pi-fw pi-building'
             }
         ]
+    },
+    {
+        label: 'Faturalar',
+        icon:'pi pi-fw pi-book',
+        items: [
+            {
+                label: 'Fatura İşlemleri',
+                icon:'pi pi-fw pi-user',
+                routerLink: ["invoices"]
+            }
+        ]
     }
 ]

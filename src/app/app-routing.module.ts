@@ -1,3 +1,4 @@
+import { InvoiceComponent } from './components/invoice/invoice.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { AdditionalComponent } from './components/additional/additional.component';
 import { RentStepComponent } from './components/rent-step/rent-step.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
     {path: 'brands', component: BrandComponent},
     {path: 'colors', component: ColorComponent},
     {path: 'cars', component: CarForDashboardComponent},  
+    {path: 'invoices', component: InvoiceComponent},  
     {path: 'brand-add', component: BrandAddComponent},
     {path: 'color-add', component: ColorAddComponent},
     {path: 'rental-add', component: RentalAddComponent},  
@@ -31,9 +33,6 @@ const routes: Routes = [
     {path: 'payment/:id', component: PaymentComponent},
   ]},
 
-  // {path: 'brand-add', component: BrandAddComponent},
-  // {path: 'color-add', component: ColorAddComponent},
-  // {path: 'rental-add', component: RentalAddComponent},
   {path: 'car/:id', component: CarDetailComponent},
   {path: 'rental-add/:id', component: RentalAddComponent},
   {path: '', redirectTo: '', pathMatch: 'full'}

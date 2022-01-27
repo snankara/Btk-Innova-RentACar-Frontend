@@ -4,7 +4,6 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { CityListModel } from 'src/app/models/cityListModel';
 import { CityService } from 'src/app/services/city.service';
 import { RentalService } from 'src/app/services/rental.service';

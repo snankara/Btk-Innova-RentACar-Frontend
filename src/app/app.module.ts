@@ -52,6 +52,10 @@ import { TagModule } from 'primeng/tag';
 import { AdditionalComponent } from './components/additional/additional.component';
 import {PickListModule} from 'primeng/picklist';
 import { PaymentComponent } from './components/payment/payment.component';
+import {InputMaskModule} from 'primeng/inputmask';
+import {CheckboxModule} from 'primeng/checkbox';
+import { InvoiceComponent } from './components/invoice/invoice.component';
+import { InvoiceDetailComponent } from './components/invoice-detail/invoice-detail.component';
 
 @NgModule({
   declarations: [
@@ -75,14 +79,18 @@ import { PaymentComponent } from './components/payment/payment.component';
     CarDeleteComponent,
     RentStepComponent,
     AdditionalComponent,
-    PaymentComponent
+    PaymentComponent,
+    InvoiceComponent,
+    InvoiceDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    CheckboxModule,
     DataViewModule,
+    InputMaskModule,
     TagModule,
     ToastModule,
     ToolbarModule,
