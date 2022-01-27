@@ -18,13 +18,13 @@ export class InvoiceComponent implements OnInit {
   exportColumns: any[];
 
   invoices: InvoiceListModel[]
-  selectedInvoice: InvoiceModel
   constructor(private invoiceService: InvoiceService) { }
 
   ngOnInit(): void {
     this.getInvoices()
     this.setColumnsValue()
-    this.exportColumns = this.columns.map(col => ({title: col.header, dataKey: col.field}));
+    this.setExportColumns()
+
   }
 
   getInvoices(){
@@ -48,18 +48,24 @@ export class InvoiceComponent implements OnInit {
 
 
   exportPdf() {
-    const doc = new jsPDF()
+    const doc = new jsPDF("l")
     autoTable(doc, {
       head: [this.exportColumns],
-      body: [
-        ['David', 'david@example.com', 'Sweden'],
-        ['Castille', 'castille@example.com', 'Spain'],
-        // ...
-      ],
+      body: [[this.invoices.map(item => item.brandName),
+        this.invoices.map(item => item.colorName),
+        this.invoices.map(item => item.dailyPrice+" tl"),
+        this.invoices.map(item => item.paymentAmount+" tl"),
+        this.invoices.map(item => item.rentedCity),
+        this.invoices.map(item => item.returnedCity),
+        this.invoices.map(item => item.rentDate),
+        this.invoices.map(item => item.invoiceDate)
+      ]],
     })
-
-    doc.save('table.pdf')
-
-    
+    doc.save('invoices.pdf')
 }
+
+
+setExportColumns(){
+  this.exportColumns = this.columns.map(col => ({title: col.header, dataKey: col.field}));
+  }
 }

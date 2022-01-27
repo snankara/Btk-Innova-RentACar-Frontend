@@ -10,23 +10,18 @@ import { AdditionalListModel } from 'src/app/models/additionalListModel';
   styleUrls: ['./invoice-detail.component.css']
 })
 export class InvoiceDetailComponent implements OnInit {
+  
   invoiceDetailDialog: boolean
   columns: any[];
   exportColumns: any[];
 
-  emptyHead: any = "Additionals Total"
-
   @Input() invoice: InvoiceModel
-
-  additionals: AdditionalListModel[]
 
   constructor() { }
 
   ngOnInit(): void {
     this.setColumnsValue()
-    this.exportColumns = this.columns.map(col => ({title: col.header, dataKey: col.field}));
-
-    this.setAdditionalName()    
+    this.setExportColumns()
   }
 
   hideDialog() {
@@ -38,25 +33,17 @@ export class InvoiceDetailComponent implements OnInit {
   }
 
   exportPdf() {
-    const doc = new jsPDF()
+    const doc = new jsPDF('l', 'px', 'a5')
     autoTable(doc, {
       head: [this.exportColumns],
       body: [
-        [this.invoice.brandName, this.invoice.colorName, this.invoice.dailyPrice, this.invoice.paymentAmount, 
-        this.invoice.rentedCity, this.invoice.returnedCity, this.invoice.rentDate, this.invoice.invoiceDate,
-        // this.additionals.map(item => item.additionalName) 
+        [this.invoice.brandName, this.invoice.colorName, this.invoice.dailyPrice+" tl",  
+        this.invoice.rentedCity, this.invoice.returnedCity, 
+        this.invoice.rentDate,this.invoice.additionalListDtos.map(item => item.additionalName) ,
+        this.invoice.paymentAmount+" tl",  this.invoice.invoiceDate
       ]
-
-        // ...
-      ],
+    ],
     })
-    autoTable(doc, { 
-      head: [this.additionals.map(item => item.additionalName), this.emptyHead],
-      body: [
-        this.additionals.map(item => item.additionalAmount.toString()+"tl") ,
-      ],
-    })
-
     doc.save('invoice.pdf')
 }
 
@@ -65,26 +52,16 @@ setColumnsValue(){
     { field: 'brandName', header: 'Brand Name' },
     { field: 'colorName', header: 'Color Name' },
     { field: 'dailyPrice', header: 'Daily Price' },
-    { field: 'paymentAmount', header: 'Payment Amount' },
     { field: 'rentedCity', header: 'Rented City' },
     { field: 'returnedCity', header: 'Returned City' },
     { field: 'rentDate', header: 'Rent Date' },
+    { field: '', header: 'Additionals' },
+    { field: 'paymentAmount', header: 'Payment Amount' },
     { field: 'invoiceDate', header: 'Invoice Date' },
-];
+  ];
 }
 
-setAdditionalName(){
-    let name : any = "";
-  
-   this.additionals =  this.invoice.additionalListDtos
-    return name; 
+  setExportColumns(){
+    this.exportColumns = this.columns.map(col => ({title: col.header, dataKey: col.field}));
+    }
   }
-
-  setAdditionalAmount(){
-    let total = 0;
-    this.additionals.forEach(item => {
-      total += item.additionalAmount
-    })
-    return total.toString();
-  }
-}

@@ -1,20 +1,135 @@
 <p-toast></p-toast>
 <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="openDialog()"></button>
-<form>
-    <p-dialog [(visible)]="invoiceDetailDialog" [style]="{width: '450px'}" header="Brand Update" [modal]="true" styleClass="p-fluid">
-        <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()" class="p-button-warning mr-2" pTooltip="PDF" tooltipPosition="bottom"></button>
-
-            <ng-template pTemplate="content">
-                <div class="field">
-                    <label for="name">Name</label>
-                    <input type="text" [(ngModel)]="invoice.brandName" [ngModelOptions]="{standalone: true}" pInputText id="name" autofocus />
+<p-dialog [(visible)]="invoiceDetailDialog" [style]="{width: '450px'}" header="Invoice Detail" [modal]="true" styleClass="p-fluid">
+<div class="stepsdemo-content">
+<p-card>
+        <ng-template pTemplate="content">
+            <div class="row justify-content-evenly">
+                <div>
+                  <button style="float: right;" pButton pRipple type="button" icon="pi pi-download" (click)="exportPdf()" class="p-button-rounded p-button-info p-button-outlined m-2"></button>     
                 </div>
-            </ng-template>  
-            <ng-template pTemplate="footer">
-                <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" type="button" (click)="hideDialog()"></button>
-                <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" type="submit"></button> 
-            </ng-template>
-    </p-dialog>
-</form>
-    
+                    <p-card>   
+                        <ng-template pTemplate="listItem">
+                                <div class="row">
+
+                                    <div class="col-md-6">
+
+                                        <div class="m-3 d-inline-block">
+                                            <i class="pi pi-tag product-category-icon"></i><small class="product-category ml-2">Marka  :</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="m-3 d-inline-block">
+                                            <small class="product-category ml-2">{{invoice.brandName}}</small>
+                                        </div>    
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="m-3 d-inline-block">
+                                            <i class="pi pi-palette product-category-icon"></i><small class="product-category ml-2">Renk  :</small>
+                                        </div>        
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="m-3 d-inline-block">
+                                            <small class="product-category ml-2">{{invoice.colorName}}</small>
+                                        </div>        
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="m-3 d-inline-block">
+                                            <i class="pi pi-money-bill product-category-icon"></i><small class="product-category ml-2">Daily Price :</small>
+                                        </div>        
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="m-3 d-inline-block">
+                                            <small class="product-category ml-2">{{invoice.dailyPrice | currency: "TRY":"₺":""}}</small>
+                                        </div>        
+                                    </div>
+                                </div> 
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="m-3 d-inline-block">
+                                            <i class="pi pi-arrow-up-right product-category-icon"></i><small class="product-category ml-2">Rented City :</small>
+                                        </div>        
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="m-3 d-inline-block">
+                                            <small class="product-category ml-2">{{invoice.rentedCity}}</small>
+                                        </div>        
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="m-3 d-inline-block">
+                                            <i class="pi pi-arrow-down-right product-category-icon"></i><small class="product-category ml-2">Returned City :</small>
+                                        </div>        
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="m-3 d-inline-block">
+                                            <small class="product-category ml-2">{{invoice.returnedCity}}</small>
+                                        </div>        
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="m-3 d-inline-block">
+                                            <i class="pi pi-calendar-plus product-category-icon"></i><small class="product-category ml-2">Rent Date :</small>
+                                        </div>        
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="m-3 d-inline-block">
+                                            <small class="product-category ml-2">{{invoice.rentDate}}</small>
+                                        </div>
+        
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="m-3 d-inline-block">
+                                            <i class="pi pi-box product-category-icon"></i><small class="product-category ml-2">Additionals</small>
+                                        </div>        
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="m-3 d-inline-block" *ngFor="let additional of invoice.additionalListDtos">
+                                            <small class="product-category ml-2">{{additional.additionalName}} {{additional.additionalAmount | currency: "TRY":"₺":""}}</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="m-3 d-inline-block">
+                                            <i class="pi pi-wallet product-category-icon"></i><small class="product-category ml-2">Payment Total </small>
+                                        </div>        
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="m-3 d-inline-block">
+                                            <small class="product-category ml-2">{{invoice.paymentAmount | currency: "TRY":"₺":""}}</small>
+                                        </div>
+        
+                                    </div>
+                                </div>
+                        </ng-template>
+                    </p-card> 
+            </div>
+        </ng-template>
+    </p-card>
+</div>
+</p-dialog>
+
 
