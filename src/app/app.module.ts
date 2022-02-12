@@ -30,6 +30,7 @@ import { NavComponent } from './components/shared/nav/nav.component';
 import { RentalAddComponent } from './components/rental-add/rental-add.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {PanelMenuModule} from 'primeng/panelmenu';
+import {SkeletonModule} from 'primeng/skeleton';
 
 import {ToastModule} from 'primeng/toast';
 import {ToolbarModule} from 'primeng/toolbar';
@@ -113,7 +114,7 @@ import { InvoiceDetailComponent } from './components/invoice-detail/invoice-deta
     PasswordModule,
     InputNumberModule,
     CalendarModule,
-    
+    SkeletonModule,
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot({

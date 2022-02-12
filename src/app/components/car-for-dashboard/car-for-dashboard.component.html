@@ -1,17 +1,17 @@
 <p-toast></p-toast>
 <div class="card">
-    <p-toolbar styleClass="mb-4">
+    <p-toolbar styleClass="mb-1">
         <ng-template pTemplate="left">
-            <app-car-add></app-car-add> 
+            <h5 class="m-0">Filonuzu Yönetin</h5>
         </ng-template>
     </p-toolbar>
-    <p-table #dt [value]="cars" [rows]="10" 
+    <p-table #dt [value]="cars" [rows]="10" *ngIf="!loading"
     [globalFilterFields]="['brandName', 'colorName', 'classTypeName', 'description', 'modelYear', 'dailyPrice', 'minFindexScore', 'kilometer', 'minCustomerAge', 'deleted']" responsiveLayout="scroll"
          [rowHover]="true" dataKey="id"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
         <ng-template pTemplate="caption">
             <div class="flex align-items-center justify-content-between">
-                <h5 class="m-0">Filonuzu Yönetin</h5>
+                <app-car-add></app-car-add> 
                 <span class="p-input-icon-left">
                     <i class="pi pi-search"></i>
                     <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')" placeholder="Search..." />
@@ -19,7 +19,7 @@
             </div>
         </ng-template>
         <ng-template pTemplate="header">
-            <tr>
+            <tr class="custom-font-sm">
                 <th pSortableColumn="brandName">Brand Name <p-sortIcon field="brandName"></p-sortIcon></th>
                 <th pSortableColumn="colorName">Color Name <p-sortIcon field="colorName"></p-sortIcon></th>
                 <th pSortableColumn="classTypeName">Class<p-sortIcon field="classTypeName"></p-sortIcon></th>            
@@ -30,10 +30,11 @@
                 <th pSortableColumn="kilometer">Kilometer<p-sortIcon field="kilometer"></p-sortIcon></th>            
                 <th pSortableColumn="minCustomerAge">Customer Age<p-sortIcon field="minCustomerAge"></p-sortIcon></th>            
                 <th pSortableColumn="deleted">Status<p-sortIcon field="deleted"></p-sortIcon></th>            
+                <th></th>            
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-car>
-            <tr>
+            <tr class="custom-font-sm">
                 <td>{{car.brandName}}</td>
                 <td>{{car.colorName}}</td>
                 <td>{{car.classTypeName}}</td>
@@ -56,4 +57,51 @@
             </div>
         </ng-template>
     </p-table>
+
+    <!-- Table for skeleton start  -->
+    <p-table responsiveLayout="scroll" [value]="skeletonValue" [rowHover]="true" dataKey="id" [rows]="10" *ngIf="loading"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="header">
+            <tr class="custom-font-sm">
+                <th pSortableColumn="brandName">Brand Name <p-sortIcon field="brandName"></p-sortIcon></th>
+                <th pSortableColumn="colorName">Color Name <p-sortIcon field="colorName"></p-sortIcon></th>
+                <th pSortableColumn="classTypeName">Class<p-sortIcon field="classTypeName"></p-sortIcon></th>            
+                <th pSortableColumn="description">Description<p-sortIcon field="description"></p-sortIcon></th>            
+                <th pSortableColumn="modelYear">Model Year<p-sortIcon field="modelYear"></p-sortIcon></th>            
+                <th pSortableColumn="dailyPrice">Daily Price<p-sortIcon field="dailyPrice"></p-sortIcon></th>            
+                <th pSortableColumn="minFindexScore">Findex Score<p-sortIcon field="minFindexScore"></p-sortIcon></th>            
+                <th pSortableColumn="kilometer">Kilometer<p-sortIcon field="kilometer"></p-sortIcon></th>            
+                <th pSortableColumn="minCustomerAge">Customer Age<p-sortIcon field="minCustomerAge"></p-sortIcon></th>            
+                <th pSortableColumn="deleted">Status<p-sortIcon field="deleted"></p-sortIcon></th>            
+                <th></th>            
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body">
+            <tr>
+                <td><p-skeleton></p-skeleton></td>
+                <td><p-skeleton></p-skeleton></td>
+                <td><p-skeleton></p-skeleton></td>
+                <td><p-skeleton></p-skeleton></td>
+                <td><p-skeleton></p-skeleton></td>
+                <td><p-skeleton></p-skeleton></td>
+                <td><p-skeleton></p-skeleton></td>
+                <td><p-skeleton></p-skeleton></td>
+                <td><p-skeleton></p-skeleton></td>
+                <td><p-skeleton></p-skeleton></td>
+                <td>
+                    <p-skeleton shape="circle" size="30px"></p-skeleton>
+                    <p-skeleton shape="circle" size="30px"></p-skeleton>
+                </td>
+            </tr>
+        </ng-template>
+                
+        <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between">
+                In total there are {{cars ? cars.length : 0 }} cars.
+            </div>
+        </ng-template>
+    </p-table>
+    <!-- Table for skeleton end  -->
 </div>
+
+

@@ -12,6 +12,9 @@ import { MessageService } from 'primeng/api';
 export class CarForDashboardComponent implements OnInit {
 
   cars : CarListModel[]
+  loading: boolean = false;
+  skeletonValue: any[] = [0,1,2,3,4,5,6,7,8,9]
+  
   constructor(private carService: CarService) { }
 
   ngOnInit(): void { 
@@ -19,9 +22,14 @@ export class CarForDashboardComponent implements OnInit {
   }
 
   getCars(){
-    this.carService.getCars().subscribe(response => {
-      this.cars = response.data
-    })
+    this.loading = true;
+
+      setTimeout(() => {
+        this.carService.getCars().subscribe(response => {
+          this.cars = response.data
+          this.loading = false;
+        })
+      }, 2000);
   }
 
 }

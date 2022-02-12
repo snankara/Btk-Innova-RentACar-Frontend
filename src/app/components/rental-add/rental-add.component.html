@@ -20,7 +20,12 @@
                                         <p-inputNumber formControlName="rentedKilometer" inputId="rentMile" suffix=" km">
                                         </p-inputNumber>
                                     </div>
-                        
+
+                                    <div class="field col-6">
+                                        <small><label for="buttonbar">Rent Date</label></small>
+                                        <p-calendar [showButtonBar]="true" formControlName="rentDate" inputId="buttonbar"></p-calendar>
+                                    </div>
+
                                     <!-- <div class="field col-6">
                                         <small><label for="returnMile">Return Kilometer</label></small>
                                         <p-inputNumber formControlName="returnedKilometer" inputId="returnMile" suffix=" km">
@@ -30,23 +35,18 @@
                         
                                 <div class="grid p-fluid">
                                     <div class="field col-6">
-                                        <small><label for="buttonbar">Rent Date</label></small>
-                                        <p-calendar [showButtonBar]="true" formControlName="rentDate" inputId="buttonbar"></p-calendar>
+                                        <small><label for="buttonbar">Rent City</label></small>
+                                        <p-dropdown [options]="cities" placeholder="Select a Rent City" formControlName="rentedCityId" optionValue="id" optionLabel="name" [showClear]="true"></p-dropdown>
                                     </div>
-                        
+
                                     <div class="field col-6">
                                         <small><label for="buttonbar2">Return Date</label></small>
                                         <p-calendar [showButtonBar]="true" formControlName="returnDate" inputId="buttonbar2"></p-calendar>
                                     </div>
                                 </div>
                         
-                                <div class="grid p-fluid">
-                                    <div class="field col-6">
-                                        <small><label for="buttonbar">Rent City</label></small>
-                                        <p-dropdown [options]="cities" placeholder="Select a Rent City" formControlName="rentedCityId" optionValue="id" optionLabel="name" [showClear]="true"></p-dropdown>
-                                    </div>
-                        
-                                    <div class="field col-6">
+                                <div class="grid p-fluid">                        
+                                    <div class="field col-12">
                                         <small><label for="buttonbar">Return City</label></small>
                                         <p-dropdown [options]="cities" placeholder="Select a Return City" formControlName="returnedCityId" optionValue="id" optionLabel="name" [showClear]="true"></p-dropdown>
                                     </div>

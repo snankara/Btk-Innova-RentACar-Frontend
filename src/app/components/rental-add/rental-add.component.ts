@@ -37,7 +37,7 @@ export class RentalAddComponent implements OnInit {
         returnDate: ["", Validators.required],
         rentedKilometer: ["", Validators.required],
         // returnedKilometer: ["", Validators.required],
-        customerId: [1, Validators.required],
+        customerId: [10, Validators.required],
         carId: [this.carId ,Validators.required],
         rentedCityId: ["", Validators.required],
         returnedCityId: ["", Validators.required]
