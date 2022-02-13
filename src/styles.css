@@ -7,3 +7,7 @@ body {
 .custom-font-sm{
   font-size: 0.9rem;
 }
+
+.p-paginator{
+  background: none !important;
+}

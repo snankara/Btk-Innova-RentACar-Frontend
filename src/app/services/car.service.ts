@@ -1,3 +1,4 @@
+import { PageModel } from './../models/pageModel';
 import { ResponseModel } from './../models/responseModel';
 import { CreateCarModel } from './../models/createCarModel';
 import { CarModel } from './../models/carModel';
@@ -21,8 +22,8 @@ export class CarService {
     return this.httpClient.get<ListResponseModel<CarListModel>>(`${this.apiUrl}/getallisdeletedfalse`)
   }
 
-  getCars(): Observable<ListResponseModel<CarListModel>>{
-    return this.httpClient.get<ListResponseModel<CarListModel>>(`${this.apiUrl}/getall`)
+  getCars(pageModel: PageModel): Observable<ListResponseModel<CarListModel>>{
+    return this.httpClient.get<ListResponseModel<CarListModel>>(`${this.apiUrl}/getall?pageNo=${pageModel.page}&pageSize=${pageModel.pageSize}`)
   }
   getById(carId: number): Observable<SingleResponseModel<CarModel>>{
     return this.httpClient.get<SingleResponseModel<CarModel>>(`${this.apiUrl}/getbyid?id=${carId}`);

@@ -5,10 +5,8 @@
             <h5 class="m-0">Filonuzu Yönetin</h5>
         </ng-template>
     </p-toolbar>
-    <p-table #dt [value]="cars" [rows]="10" *ngIf="!loading"
-    [globalFilterFields]="['brandName', 'colorName', 'classTypeName', 'description', 'modelYear', 'dailyPrice', 'minFindexScore', 'kilometer', 'minCustomerAge', 'deleted']" responsiveLayout="scroll"
-         [rowHover]="true" dataKey="id"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+    <p-table #dt [value]="cars" [rows]="10" *ngIf="!loading" [rowHover]="true" dataKey="id"
+    [globalFilterFields]="['brandName', 'colorName', 'classTypeName', 'description', 'modelYear', 'dailyPrice', 'minFindexScore', 'kilometer', 'minCustomerAge', 'deleted']" responsiveLayout="scroll">
         <ng-template pTemplate="caption">
             <div class="flex align-items-center justify-content-between">
                 <app-car-add></app-car-add> 
@@ -46,16 +44,21 @@
                 <td>{{car.minCustomerAge}}</td>
                 <td><p-badge [value]="car.deleted" [severity]="car.deleted ? 'danger' : 'info'"></p-badge></td>
                 <td>
-                    <app-car-update class="d-inline-block" [car]="car"></app-car-update>
+                    <app-car-update [car]="car"></app-car-update>
                     <app-car-delete [car]="car"></app-car-delete>
                 </td>
             </tr>
         </ng-template>
+
         <ng-template pTemplate="summary">
-            <div class="flex align-items-center justify-content-between">
-                In total there are {{cars ? cars.length : 0 }} cars.
+            <div class="flex align-items-center justify-content-center">
+                <p-paginator [rows]="10" [first]="first" [totalRecords]="totalCount" (onPageChange)="loadMoreCars($event)"></p-paginator>
+            </div>
+            <div class="flex align-items-center justify-content-center mt-3">
+                In total there are {{totalCount}} cars.
             </div>
         </ng-template>
+
     </p-table>
 
     <!-- Table for skeleton start  -->

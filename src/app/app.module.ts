@@ -31,6 +31,7 @@ import { RentalAddComponent } from './components/rental-add/rental-add.component
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {PanelMenuModule} from 'primeng/panelmenu';
 import {SkeletonModule} from 'primeng/skeleton';
+import {PaginatorModule} from 'primeng/paginator';
 
 import {ToastModule} from 'primeng/toast';
 import {ToolbarModule} from 'primeng/toolbar';
@@ -91,6 +92,7 @@ import { InvoiceDetailComponent } from './components/invoice-detail/invoice-deta
     HttpClientModule,
     CheckboxModule,
     DataViewModule,
+    PaginatorModule,
     InputMaskModule,
     TagModule,
     ToastModule,
