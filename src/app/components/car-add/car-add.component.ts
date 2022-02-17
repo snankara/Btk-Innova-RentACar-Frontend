@@ -23,7 +23,8 @@ export class CarAddComponent implements OnInit, AfterViewChecked {
 
   carAddForm: FormGroup
   carAddDialog: boolean;
-  
+  submitted : boolean = false;
+
   constructor(private brandService: BrandService, private formBuilder: FormBuilder, 
               private messageService: MessageService, private colorService: ColorService, private classTypeService: ClassTypeService,
               private carService: CarService, private changeDetector: ChangeDetectorRef) { }
@@ -54,6 +55,7 @@ export class CarAddComponent implements OnInit, AfterViewChecked {
   }
 
   add(){
+    this.submitted = true
     if (this.carAddForm.valid) {
         let carModel = Object.assign({}, this.carAddForm.value)
         this.carService.add(carModel).subscribe(response => {
@@ -89,6 +91,7 @@ export class CarAddComponent implements OnInit, AfterViewChecked {
   openNew() {
     this.carAddForm.reset()
     this.carAddDialog = true;
+    this.submitted = false
 }
 
   hideDialog() {

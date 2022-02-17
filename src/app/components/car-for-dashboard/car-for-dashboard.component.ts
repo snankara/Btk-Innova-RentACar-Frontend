@@ -1,3 +1,4 @@
+import { CarModel } from './../../models/carModel';
 import { PageModel } from './../../models/pageModel';
 import { CarService } from './../../services/car.service';
 import { CarListModel } from './../../models/carListModel';
@@ -28,14 +29,13 @@ export class CarForDashboardComponent implements OnInit {
 
   getCars(pageModel: PageModel){
     this.loading = true;
-
       setTimeout(() => {
         this.carService.getCars(pageModel).subscribe(response => {
           this.cars = response.data
           this.totalCount = response.totalCount;
           this.loading = false;          
         })
-      }, 2000);
+      }, 1000);
   }
 
   loadMoreCars(event: any){

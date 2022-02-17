@@ -3,57 +3,110 @@
 <form [formGroup]="carAddForm" (submit)="add()">
 <p-dialog [(visible)]="carAddDialog" [style]="{width: '450px'}" header="Car Add" [modal]="true" styleClass="p-fluid">
         <ng-template pTemplate="content">
-
-            <div class="formgrid grid">
-                <div class="field col">
-                    <label for="brandId">Select Brand</label>
-                    <p-dropdown inputId="brandId" formControlName="brandId" [options]="brands" placeholder="Select Brand" optionValue="id" optionLabel="name"></p-dropdown>
+            <div class="formgrid grid mt-2">
+                <div class="field col"> 
+                    <p-dropdown class="p-inputtext-sm" inputId="brandId" formControlName="brandId" [options]="brands" placeholder="Select Brand" optionValue="id" optionLabel="name"></p-dropdown>
+                    <small id="brandId" class="p-error" 
+                    *ngIf="submitted && carAddForm.controls['brandId'].errors?.['required'] || 
+                    carAddForm.controls['brandId'].invalid && 
+                    (carAddForm.controls['brandId'].dirty || carAddForm.controls['brandId'].touched)">*Bu Alan Zorunludur.
+                    </small>
                 </div>
 
                 <div class="field col">
-                    <label for="colorId">Select Color</label>
-                    <p-dropdown inputId="colorId" formControlName="colorId" [options]="colors" placeholder="Select Color" optionValue="id" optionLabel="name"></p-dropdown>
-                </div>
-            </div>
-
-            <div class="formgrid grid">
-                <div class="field col">
-                    <label for="minFindexScore">Min. Findex</label>
-                    <p-inputNumber id="minFindexScore" formControlName="minFindexScore"></p-inputNumber>
-                </div>
-                <div class="field col">
-                    <label for="minCustomerAge">Min. Age</label>
-                    <p-inputNumber id="minCustomerAge" formControlName="minCustomerAge"></p-inputNumber>
+                    <p-dropdown class="p-inputtext-sm" inputId="colorId" formControlName="colorId" [options]="colors" placeholder="Select Color" optionValue="id" optionLabel="name"></p-dropdown>
+                    <small id="colorId" class="p-error" 
+                    *ngIf="submitted && carAddForm.controls['colorId'].errors?.['required'] || 
+                    carAddForm.controls['colorId'].invalid && 
+                    (carAddForm.controls['colorId'].dirty || carAddForm.controls['colorId'].touched)">*Bu Alan Zorunludur.
+                    </small>
                 </div>
             </div>
 
-            <div class="formgrid grid">
-
+            <div class="formgrid grid mt-3">
                 <div class="field col">
-                    <label for="classTypeId">Select Segment</label>
-                    <p-dropdown inputId="classTypeId" [options]="classTypes" formControlName="classTypeId" placeholder="Select Segment" optionValue="id" optionLabel="classTypeName"></p-dropdown>
+                    <span class="p-float-label">
+                        <p-inputNumber class="p-inputtext-sm" id="minFindexScore" formControlName="minFindexScore"></p-inputNumber>
+                        <label for="minFindexScore">Min. Findex</label>
+                    </span>
+                    <small id="minFindexScore" class="p-error" 
+                    *ngIf="submitted && carAddForm.controls['minFindexScore'].errors?.['required'] || 
+                    carAddForm.controls['minFindexScore'].invalid && 
+                    (carAddForm.controls['minFindexScore'].dirty || carAddForm.controls['minFindexScore'].touched)">*Bu Alan Zorunludur.
+                    </small>
                 </div>
                 <div class="field col">
-                    <label for="price">Daily Price</label>
-                    <p-inputNumber id="price" mode="currency" formControlName="dailyPrice" currency="TRY" locale="tr-TR"></p-inputNumber>
+                    <span class="p-float-label">
+                        <p-inputNumber class="p-inputtext-sm" id="minCustomerAge" formControlName="minCustomerAge"></p-inputNumber>
+                        <label for="minCustomerAge">Min. Age</label>
+                    </span>
+                    <small id="minCustomerAge" class="p-error" 
+                    *ngIf="submitted && carAddForm.controls['minCustomerAge'].errors?.['required'] || 
+                    carAddForm.controls['minCustomerAge'].invalid && 
+                    (carAddForm.controls['minCustomerAge'].dirty || carAddForm.controls['minCustomerAge'].touched)">*Bu Alan Zorunludur.
+                    </small>
                 </div>
             </div>
 
-            <div class="formgrid grid">
+            <div class="formgrid grid mt-3">
                 <div class="field col">
-                    <label for="kilometer">Kilometer</label>
-                    <p-inputNumber id="kilometer" formControlName="kilometer"></p-inputNumber>
+                    <p-dropdown class="p-inputtext-sm" inputId="classTypeId" [options]="classTypes" formControlName="classTypeId" placeholder="Select Segment" optionValue="id" optionLabel="classTypeName"></p-dropdown>
+                    <small id="classTypeId" class="p-error" 
+                    *ngIf="submitted && carAddForm.controls['classTypeId'].errors?.['required'] || 
+                    carAddForm.controls['classTypeId'].invalid && 
+                    (carAddForm.controls['classTypeId'].dirty || carAddForm.controls['classTypeId'].touched)">*Bu Alan Zorunludur.
+                    </small>
                 </div>
 
                 <div class="field col">
-                    <label for="modelYear">Model Year</label>
-                    <p-inputNumber formControlName="modelYear" mode="decimal" inputId="withoutgrouping" [useGrouping]="false"></p-inputNumber>
+                    <span class="p-float-label">
+                        <p-inputNumber class="p-inputtext-sm" id="dailyPrice" mode="currency" formControlName="dailyPrice" currency="TRY" locale="tr-TR"></p-inputNumber>
+                        <label for="dailyPrice">Daily Price</label>
+                    </span>
+                    <small id="dailyPrice" class="p-error" 
+                    *ngIf="submitted && carAddForm.controls['dailyPrice'].errors?.['required'] || 
+                    carAddForm.controls['dailyPrice'].invalid && 
+                    (carAddForm.controls['dailyPrice'].dirty || carAddForm.controls['dailyPrice'].touched)">*Bu Alan Zorunludur.
+                    </small>
+                </div>
+            </div>
+
+            <div class="formgrid grid mt-3">
+                <div class="field col">
+                    <span class="p-float-label">
+                        <p-inputNumber class="p-inputtext-sm" id="kilometer" formControlName="kilometer"></p-inputNumber>
+                        <label for="kilometer">Kilometer</label>
+                    </span>
+                    <small id="kilometer" class="p-error" 
+                    *ngIf="submitted && carAddForm.controls['kilometer'].errors?.['required'] || 
+                    carAddForm.controls['kilometer'].invalid && 
+                    (carAddForm.controls['kilometer'].dirty || carAddForm.controls['kilometer'].touched)">*Bu Alan Zorunludur.
+                    </small>
+                </div>
+
+                <div class="field col">
+                    <span class="p-float-label">
+                        <p-inputNumber class="p-inputtext-sm" formControlName="modelYear" mode="decimal" inputId="withoutgrouping" [useGrouping]="false"></p-inputNumber>
+                        <label for="modelYear">Model Year</label>
+                    </span>
+                    <small id="modelYear" class="p-error" 
+                    *ngIf="submitted && carAddForm.controls['modelYear'].errors?.['required'] || 
+                    carAddForm.controls['modelYear'].invalid && 
+                    (carAddForm.controls['modelYear'].dirty || carAddForm.controls['modelYear'].touched)">*Bu Alan Zorunludur.
+                    </small>
                 </div>
             </div>
  
-            <div class="field">
-                <label for="description">Description</label>
-                <textarea id="description" pInputTextarea formControlName="description" required rows="3" cols="20"></textarea>
+            <div class="field mt-3">
+                <span class="p-float-label">
+                    <textarea id="description" class="p-inputtext-sm" pInputTextarea formControlName="description" required rows="3" cols="20"></textarea>
+                    <label for="description">Description</label>
+                </span>
+                <small id="description" class="p-error" 
+                *ngIf="submitted && carAddForm.controls['description'].errors?.['required'] || 
+                carAddForm.controls['description'].invalid && 
+                (carAddForm.controls['description'].dirty || carAddForm.controls['description'].touched)">*Bu Alan Zorunludur.
+                </small>
             </div>
 
         </ng-template> 
